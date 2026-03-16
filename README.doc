@@ -9,6 +9,9 @@ User Story 1: As a student, I want a user interface that is customizable to my d
 User Story 2: As a student, I want a user interface that is personalized where I can see my selected recipes and grocery lists for the week, so that all my meal planning is in one place.
 User Story 3: As a student, I want a user interface where I can communicate with UHS staff easily and ask any questions I may have. As an admin, I want a user interface where I can respond to student questions regarding meal plans and dietary needs/preferences.
 
+Burndown Chart Screenshots:
+
+
 Daily SCRUM Meeting Evidence (1/2) - 3.13.2026
 Amber:
 What did you do yesterday?
@@ -18,7 +21,7 @@ I plan on going over our high priority tasks during our sprint review meeting. I
 Any problems are you facing?
 We are struggling a little bit to stay organized with all of the deliverables for Sprint 1 and Milestone 2. Our team took some time today to go through and assign all of these responsibilities. We are using a color coded system to keep track of our progress. 
 
-Maddie:
+Maddie
 What did you do yesterday?
 I continued working on finding images for each of the ingredients in the recipes provided to us by Alicia. I also attended a daily scrum meeting with our group to touch base mid-sprint and to determine what next steps look like.
 What are you planning to do today?
@@ -28,6 +31,13 @@ Our group is struggling slightly to balance the work between Milestone 2 and the
 
 Mamadou:
 Helena:
+What did you do yesterday?
+Yesterday I focused on getting caught up on what tasks needed to get done for Sprint 1 and Milestone 2. I cloned the repo and made sure my Justinmind account was working. I reviewed the assignment details and asked the team clarifying questions. 
+What are you planning to do today?
+Today I was assigned two tasks, creating the burndown chart for the user stories task and creating the Use-Case Diagram. I plan on working on the burndown chart today by inputting the tasks Maddie wrote into Trello and then using a powerup to generate a burndown chart. Once finished, I will take a screenshot and put it into the README doc.
+Any problems are you facing?
+At the moment I don’t see the particular Burndown Chart powerup on Trello, so I will need to look more into that. I will also need to review how to make a use-case diagram and how detailed it needs to be. Overall, there are a lot of moving parts for this Sprint and Milestone 2 so the team and I are getting a bit overwhelmed by the amount of work that needs to be done.
+
 Jaya:
 
 
