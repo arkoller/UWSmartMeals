@@ -1,9 +1,119 @@
-><!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>UW SmartMeals Project</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">UW SmartMeals</h1>
+
+      <div class="auth-buttons">
+        <button a href="login.html" class="btn login">Log In</button>
+        <button a href="signup.html" class="btn signup">Sign Up</button>
+      </div>
+    </header>
+
+    <!-- Nav bar -->
+    <div class="features">
+      <a href="meal-plans.html" class="feature-box">
+        <div class="feature-content">
+          <img
+            src="images/CalendarIcon.png"
+            alt="Custom Meal Plans Icon"
+            class="feature-icon"
+          />
+          <div>
+            <h3>Custom Meal Plans</h3>
+            <p>Personalized recipes to fit your diet & budget.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="grocery-lists.html" class="feature-box">
+        <div class="feature-content">
+          <img
+            src="images/GroceryCart.png"
+            alt="Smart Grocery Lists Icon"
+            class="feature-icon"
+          />
+          <div>
+            <h3>Smart Grocery Lists</h3>
+            <p>Efficient shopping lists to save you time & money.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="cost-tips.html" class="feature-box">
+        <div class="feature-content">
+          <img
+            src="images/PiggyBank.png"
+            alt="Cost-Saving Tips Icon"
+            class="feature-icon"
+          />
+          <div>
+            <h3>Cost-Saving Tips</h3>
+            <p>Tips & tricks to eat healthy meals for less.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- Main Dashboard-->
+    <div class="main-layout">
+      <!-- Meal Plan Content -->
+      <div class="meal-section">
+        <div class="section-title">This Week's Meal Plan</div>
+
+        <div class="meal-cards">
+          <div class="meal-card">
+            <img src="images/meal1.jpg" alt="Meal 1" />
+            <!-- Need images for meals that will be pulled from meal-plans.html-->
+            <p>Meal 1 Text</p>
+          </div>
+
+          <div class="meal-card">
+            <img src="images/meal2.jpg" alt="Meal 2" />
+            <!-- Need images for meals that will be pulled from meal-plans.html-->
+            <p>Meal 2 Text</p>
+          </div>
+
+          <div class="meal-card">
+            <img src="images/meal3.jpg" alt="Meal 3" />
+            <!-- Need images for meals that will be pulled from meal-plans.html-->
+            <p>Meal 3 Text</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferences -->
+      <div class="preferences">
+        <h3>Set Your Preferences</h3>
+
+        <div class="pref-group">
+          <p><strong>Diet</strong></p>
+          <label><input type="checkbox" /> Vegetarian</label><br />
+          <label><input type="checkbox" /> Vegan</label><br />
+          <label><input type="checkbox" /> Gluten-Free</label>
+        </div>
+
+        <div class="pref-group">
+          <p><strong>Budget</strong></p>
+          <label><input type="radio" name="budget" /> $ Low</label><br />
+          <label><input type="radio" name="budget" /> $$ Medium</label><br />
+          <label><input type="radio" name="budget" /> $$$ Flexible</label>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer">
+      <div class="footer-buttons">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact UHS</a>
+        <a href="resources.html">Resources</a>
+      </div>
+    </footer>
+  </body>
 </html>
