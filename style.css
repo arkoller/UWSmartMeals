@@ -1,0 +1,173 @@
+/* Body / Global Styles */
+body {
+  background-image: url("Images/UWSmartMealsBckgrnd.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e65100;
+  padding: 15px 30px;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  margin: 0;
+  font-size: 28px;
+}
+
+/* Sign Up / Login Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.login {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.signup {
+  background-color: #1b5e20;
+  color: white;
+}
+
+/* Feature Boxes / Nav Bar */
+.features {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+}
+
+.feature-box {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #33691e;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: background 0.2s;
+}
+
+.feature-box:hover {
+  background-color: #e0e0e0;
+}
+
+.feature-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px 30px;
+}
+
+/* Meal Section (Left Side) */
+.meal-section {
+  flex: 3;
+}
+
+.section-title {
+  background-color: #33691e;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Meal Cards */
+.meal-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.meal-card {
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  flex: 1;
+}
+
+.meal-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.meal-card p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Preferences (Right Side) */
+.preferences {
+  flex: 1;
+  background-color: #33691e;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.pref-group {
+  margin-top: 15px;
+}
+
+.pref-group p {
+  margin-bottom: 5px;
+}
+
+/* Footer */
+.footer {
+  background-color: #e65100;
+  padding: 15px 0;
+  margin-top: 20px;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-buttons a {
+  background-color: #33691e;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.footer-buttons a:hover {
+  background-color: #2e7d32;
+  transform: translateY(-2px);
+}
