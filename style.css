@@ -1,5 +1,7 @@
 /* Body / Global Styles */
 body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   background-image: url("Images/UWSmartMealsBckgrnd.webp");
   background-size: cover;
   background-position: center;
@@ -15,14 +17,13 @@ body {
   padding: 15px 30px;
 }
 
-/* Logo */
 .logo {
   color: white;
   margin: 0;
   font-size: 28px;
 }
 
-/* Sign Up / Login Buttons */
+/* Buttons */
 .auth-buttons {
   display: flex;
   gap: 10px;
@@ -30,10 +31,10 @@ body {
 
 .btn {
   padding: 8px 16px;
-  border: none;
-  cursor: pointer;
   font-size: 14px;
-  border-radius: 3px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .login {
@@ -46,26 +47,28 @@ body {
   color: white;
 }
 
-/* Feature Boxes / Nav Bar */
+/* Feature Boxes */
 .features {
   display: flex;
-  gap: 20px;
-  padding: 20px 30px;
+  gap: 25px;
+  padding: 25px 40px;
 }
 
 .feature-box {
-  display: block;
+  flex: 1;
   text-decoration: none;
   color: white;
   background-color: #33691e;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  transition: background 0.2s;
+  padding: 20px;
+  border-radius: 12px;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 .feature-box:hover {
-  background-color: #e0e0e0;
+  background-color: #2b5d18;
+  transform: translateY(-3px);
 }
 
 .feature-content {
@@ -77,97 +80,99 @@ body {
 .feature-icon {
   width: 50px;
   height: 50px;
-  object-fit: contain;
 }
 
 /* Main Layout */
 .main-layout {
   display: flex;
-  gap: 20px;
-  padding: 20px 30px;
+  gap: 40px;
+  padding: 40px;
+  align-items: flex-start;
 }
 
-/* Meal Section (Left Side) */
+/* Contact Box (LEFT) */
+.contact-box {
+  background-color: #3f5f0b;
+  color: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.contact-box h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.contact-box label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.contact-box textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Meal Section (RIGHT) */
 .meal-section {
-  flex: 3;
+  flex: 1;
 }
 
 .section-title {
   background-color: #33691e;
   color: white;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px 15px;
+  margin-bottom: 20px;
   font-weight: bold;
+  font-size: 18px;
 }
 
 /* Meal Cards */
 .meal-cards {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .meal-card {
-  background: white;
-  border-radius: 5px;
-  overflow: hidden;
+  background: #f0f0f0;
+  border-radius: 6px;
   text-align: center;
-  flex: 1;
+  width: 220px;
+  padding: 10px;
 }
 
 .meal-card img {
   width: 100%;
-  height: 150px;
+  height: 130px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 .meal-card p {
-  margin: 10px 0;
+  margin-top: 10px;
   font-weight: bold;
-}
-
-/* Preferences (Right Side) */
-.preferences {
-  flex: 1;
-  background-color: #33691e;
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-}
-
-.pref-group {
-  margin-top: 15px;
-}
-
-.pref-group p {
-  margin-bottom: 5px;
 }
 
 /* Footer */
 .footer {
   background-color: #e65100;
-  padding: 15px 0;
-  margin-top: 20px;
-}
-
-.footer-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-buttons a {
-  background-color: #33691e;
   color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: bold;
-  transition:
-    background-color 0.2s,
-    transform 0.2s;
-}
-
-.footer-buttons a:hover {
-  background-color: #2e7d32;
-  transform: translateY(-2px);
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  width: 100%;
 }
