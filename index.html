@@ -6,18 +6,19 @@
     <title>UW SmartMeals Project</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <!-- Header -->
     <header class="header">
       <h1 class="logo">UW SmartMeals</h1>
 
       <div class="auth-buttons">
-        <button a href="login.html" class="btn login">Log In</button>
-        <button a href="signup.html" class="btn signup">Sign Up</button>
+        <a href="login.html" class="btn login">Log In</a>
+        <a href="signup.html" class="btn signup">Sign Up</a>
       </div>
     </header>
 
-    <!-- Nav bar -->
+    <!-- Features -->
     <div class="features">
       <a href="meal-plans.html" class="feature-box">
         <div class="feature-content">
@@ -56,64 +57,55 @@
           />
           <div>
             <h3>Cost Savings</h3>
-            <p>Tips & tricks to eat healthy meals for less.</p>
+            <p>
+              Simplified meal planning to lower grocery costs and reduce waste.
+            </p>
           </div>
         </div>
       </a>
     </div>
-    <!-- Main Dashboard-->
+
+    <!-- Main Dashboard -->
     <div class="main-layout">
-      <!-- Meal Plan Content -->
+      <!-- Contact UHS (LEFT) -->
+      <div class="contact-box">
+        <h3>Contact UHS</h3>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Insert Email Here" />
+
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Insert Message Here"></textarea>
+      </div>
+
+      <!-- Meal Section (RIGHT) -->
       <div class="meal-section">
-        <div class="section-title">This Week's Meal Plan</div>
+        <div class="section-title">
+          Explore Nutritious, Budget-Friendly Meals
+        </div>
 
         <div class="meal-cards">
           <div class="meal-card">
             <img src="images/meal1.jpg" alt="Meal 1" />
-            <!-- Need images for meals that will be pulled from meal-plans.html-->
             <p>Meal 1 Text</p>
           </div>
 
           <div class="meal-card">
             <img src="images/meal2.jpg" alt="Meal 2" />
-            <!-- Need images for meals that will be pulled from meal-plans.html-->
             <p>Meal 2 Text</p>
           </div>
 
           <div class="meal-card">
             <img src="images/meal3.jpg" alt="Meal 3" />
-            <!-- Need images for meals that will be pulled from meal-plans.html-->
             <p>Meal 3 Text</p>
           </div>
         </div>
       </div>
-
-      <!-- Preferences -->
-      <div class="preferences">
-        <h3>Set Your Preferences</h3>
-
-        <div class="pref-group">
-          <p><strong>Diet</strong></p>
-          <label><input type="checkbox" /> Vegetarian</label><br />
-          <label><input type="checkbox" /> Vegan</label><br />
-          <label><input type="checkbox" /> Gluten-Free</label>
-        </div>
-
-        <div class="pref-group">
-          <p><strong>Budget</strong></p>
-          <label><input type="radio" name="budget" /> $ Low</label><br />
-          <label><input type="radio" name="budget" /> $$ Medium</label><br />
-          <label><input type="radio" name="budget" /> $$$ Flexible</label>
-        </div>
-      </div>
     </div>
-    <!-- Footer-->
+
+    <!-- Footer -->
     <footer class="footer">
-      <div class="footer-buttons">
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact UHS</a>
-        <a href="resources.html">Resources</a>
-      </div>
+      <p>Developed with guidance from a UHS Registered Dietitian</p>
     </footer>
   </body>
 </html>
