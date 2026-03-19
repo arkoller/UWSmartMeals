@@ -61,9 +61,7 @@ body {
   background-color: #33691e;
   padding: 20px;
   border-radius: 12px;
-  transition:
-    transform 0.2s,
-    background 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .feature-box:hover {
