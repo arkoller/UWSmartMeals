@@ -6,6 +6,20 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* formatting */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  flex: 1;
 }
 
 /* Header */
@@ -21,6 +35,8 @@ body {
   color: white;
   margin: 0;
   font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 /* Buttons */
@@ -173,4 +189,85 @@ body {
   padding: 15px;
   margin-top: 40px;
   width: 100%;
+}
+
+/* Signup Page */
+
+.signup-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.signup-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-container {
+  background-color: white;
+  width: 100%;
+  max-width: 700px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  margin-top: 0;
+  color: #c5050c;
+  text-align: center;
+}
+
+.signup-container p {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.primary-btn {
+  background-color: #c5050c;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.login-link a {
+  color: #c5050c;
+  font-weight: bold;
+  text-decoration: none;
 }
