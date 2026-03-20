@@ -1,0 +1,145 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>recipes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.html" class="logo">UW SmartMeals</a>
+
+      <div class="auth-buttons">
+        <a href="meal-plans.html" class="btn login" class="">Meal Plan</a>
+        <a href="recipes.html" class="btn signup">Recipes</a>
+        <a href="index.html" class="btn signup">Log Out</a>
+      </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="filter-box">
+        <h3>Set Your Preferences</h3>
+
+        <label>Diet</label>
+        <div class="meal-filter-box">
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="vegetarian" class="checkbox-text">Vegetarian</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="vegan" class="checkbox-text">Vegan</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="gluten-free" class="checkbox-text">Gluten-Free</label>
+            </div>
+          </div>
+        </div>
+
+        <label>Budget</label>
+        <div class="meal-filter-box">
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="$" class="checkbox-text">$ Low</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="$$" class="checkbox-text">$$ Medium</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="$$$" class="checkbox-text">$$$ High</label>
+            </div>
+          </div>
+        </div>
+        <label>Meal</label>
+
+        <div class="meal-filter-box">
+          <div class="checkbox-container">
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="breakfast" class="checkbox-text">Breakfast</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="lunch" class="checkbox-text">Lunch</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" name="meal filter" />
+              <label for="dinner" class="checkbox-text">Dinner</label>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px">
+          <button class="btn signup" style="background-color: #e65100">
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="search-container">
+        <h3>Search for Recipes</h3>
+        <input
+          type="text"
+          placeholder="Search for recipes..."
+          class="search-input"
+        />
+        <div class="recipes-container">
+          <div class="recipe-item">
+            <img
+              src="Images/pasta-salad-04-2.jpg"
+              alt="Pasta Salad"
+              class="recipe-image"
+            />
+            <div class="recipe-details">
+              <span class="recipe-text">Pasta Salad</span>
+              <div class="description-row">
+                <div class="recipe-description">
+                  Ingredients: Pasta, Mozzarella, Cucumber, Tomato. A refreshing
+                  dish perfect for summer meals.
+                </div>
+                <button class="add-button">Add to Meal Plan</button>
+              </div>
+            </div>
+          </div>
+          <div class="recipe-item">
+            <img
+              src="Images/peanut-butter-toast-image.jpg"
+              alt="Peanut Butter & Banana Toast"
+              class="recipe-image"
+            />
+            <div class="recipe-details">
+              <span class="recipe-text">Peanut Butter & Banana Toast</span>
+              <div class="description-row">
+                <div class="recipe-description">
+                  A simple and healthy breakfast with peanut butter and banana
+                  on toast.
+                </div>
+                <button class="add-button">Add to Meal Plan</button>
+              </div>
+            </div>
+          </div>
+          <div class="recipe-item">
+            <img
+              src="Images/kf-easy-chicken-tacos-gwfh-mediumSquareAt3X.jpg"
+              alt="Chicken Tacos"
+              class="recipe-image"
+            />
+            <div class="recipe-details">
+              <span class="recipe-text">Chicken Tacos</span>
+              <div class="description-row">
+                <div class="recipe-description">
+                  Spicy chicken tacos with fresh toppings, served with salsa and
+                  guacamole for extra flavor.
+                </div>
+                <button class="add-button">Add to Meal Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
