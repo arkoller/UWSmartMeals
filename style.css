@@ -79,9 +79,7 @@ main {
   background-color: #33691e;
   padding: 20px;
   border-radius: 12px;
-  transition:
-    transform 0.2s,
-    background 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 
 .feature-box:hover {
@@ -409,4 +407,14 @@ main {
 
 .grocery button:hover {
   background-color: #bf360c;
+}
+
+.btn {
+  display: inline-block;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
 }
