@@ -1,19 +1,24 @@
-Link to Public Repo 
+Link to Public Repo:
 https://github.com/arkoller/UWSmartMeals.git 
 
-Link to Trello Board
+
+Link to Trello Board:
 https://trello.com/invite/b/697bcd8d1a0355075c3166b9/ATTI551b545d93fc91ac9d6aaf0c43b329c134FA9C02/group-project-plan
+
 
 Sprint #1 User Stories:
 User Story 1: As a student, I want a user interface that is customizable to my dietary needs and preferences, so that I can easily find meals that fit my diet.
 User Story 2: As a student, I want a user interface that is personalized where I can see my selected recipes and grocery lists for the week, so that all my meal planning is in one place.
 User Story 3: As a student, I want a user interface where I can communicate with UHS staff easily and ask any questions I may have. As an admin, I want a user interface where I can respond to student questions regarding meal plans and dietary needs/preferences.
 
+
 Burndown Chart Screenshots:
 https://github.com/arkoller/UWSmartMeals/blob/8e7ee43e0eb4eacfd132a71d20fbaa024b422e40/Screenshot%202026-03-16%20at%201.01.34%E2%80%AFPM.png
 https://github.com/arkoller/UWSmartMeals/blob/4c4217e7edc426f3385bc4b7fefedab1866b53c6/Screenshot%202026-03-21%20at%2012.25.42%E2%80%AFAM.png
 
+
 Daily SCRUM Meeting Evidence (1/2) - 3.13.2026
+
 Amber:
 What did you do yesterday?
 I worked on organizing the google drive and created relevant folders. I also created the SCRUM documents in Google Docs to keep our team more organized for our sprint meetings and review. Lastly I listed out our Milestone 2 and Sprint 1 deliverables and ToDos. 
@@ -22,7 +27,7 @@ I plan on going over our high priority tasks during our sprint review meeting. I
 Any problems are you facing?
 We are struggling a little bit to stay organized with all of the deliverables for Sprint 1 and Milestone 2. Our team took some time today to go through and assign all of these responsibilities. We are using a color coded system to keep track of our progress. 
 
-Maddie
+Maddie:
 What did you do yesterday?
 I continued working on finding images for each of the ingredients in the recipes provided to us by Alicia. I also attended a daily scrum meeting with our group to touch base mid-sprint and to determine what next steps look like.
 What are you planning to do today?
@@ -54,8 +59,17 @@ I plan on reviewing what we discussed regarding the website UI and beginning the
 Any problems are you facing?
 Our group feels a bit overwhelmed by the amount of deliverables required for this phase of the project. However, after our scrum meeting, we are feeling more organized now that we have clarified who is responsible for each task.
 
+
 Daily SCRUM Meeting Evidence (2/2) - 3.19.2026
+
 Amber:
+What did you do yesterday?
+Yesterday, we brainstormed the intricacies of each of the website's pages and discussed specific details of the meal planner page. I also clarified certain project questions with the Professor and updated our meeting ToDos. 
+What are you planning to do today?
+Today, I plan to send the prototypes to our client, Alicia, to see if she has any final adjustments or suggestions she would like to make. I will also share a Draw.io document with the group to start working on our context, level-0, and level-1 diagrams, and finish working on the context level diagram. I also plan to start working on the presentation slides for our sprint deliverables. 
+Any problems are you facing?
+My laptop has been having some software issues ever since I started my other IS class and downloaded Xcode for IOS app development. This software has used a significant portion of my laptops RAM and storage so its been impacting my VScode a bit. 
+
 Maddie:
 
 
@@ -66,7 +80,6 @@ What are you planning to do today?
 Today I plan on coding the login page, adding my scrum meeting answers to the ReadMe doc, and going over the presentation slides for Tuesday. 
 Any problems are you facing?
 Not really, should be on track to completing the sprint on time. 
-
 
 Helena:
 What did you do yesterday?
@@ -84,12 +97,20 @@ Today, I plan on making the adjustments we discussed to the Justinmind prototype
 Any problems are you facing?
 Currently, I am not facing any problems. Everything is on track, but I’ll reach out if anything comes up as I continue working.
 
-Sprint Review
 
-a. What did you learn from doing our first sprint?
-b. What did go well? Why?
-c. What didn’t go well? Why not?
-d. How can you make things better next time?
-e. Are you satisfied with what you already completed?
-f. Which group was invited? What are your observations/notes? Everybody was present?
+Sprint Review:
+
+What did you learn from doing our first sprint?
+We learned how to apply Agile and Scrum in a real project setting, including breaking down user stories into management tasks, using Trello to track our progress, and communicating regularly as a team. We also gained experience balancing design and implementation within a short period of time.
+What did go well? Why?
+Task delegation went well because responsibilities were clearly assigned to each team member. This helped us stay organized and ensured that work was completed efficiently without too much overlap.
+What didn’t go well? Why not?
+The start of the sprint was slower than expected because there was a lot to organize and keep track of (charts, tasks, tools, etc.). This delayed momentum early on and led to a heavier workload toward the end of the sprint.
+How can you make things better next time?
+For our next sprint, we plan to get organized more efficiently, define our necessary tasks and deliverables, and start the process earlier. For this sprint, we had a hard time defining all of our objectives in the initial stages so we will ensure this is done sooner and we aren’t rushed towards the end of the sprint. 
+Are you satisfied with what you already completed?
+Yes, we are satisfied with what we completed during this sprint, as we were able to design and implement the core pages of our website.
+Which group was invited? What are your observations/notes? Everybody was present?
+We invited Group 6 to our sprint review. Everyone was present, and the session went smoothly. We were able to clearly demonstrate our progress and explain our design decisions, and they provided helpful feedback for moving forward.
+
 
