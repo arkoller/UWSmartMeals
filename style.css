@@ -53,6 +53,12 @@ main {
   border-radius: 4px;
   text-decoration: none;
   display: inline-block;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
 }
 
 .login {
@@ -63,6 +69,87 @@ main {
 .signup {
   background-color: #2e7d32;
   color: white;
+}
+
+/* Sign Up / Login Pages */
+.signup-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.signup-container {
+  background-color: white;
+  width: 100%;
+  max-width: 700px;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  margin-top: 0;
+  color: #c5050c;
+  text-align: center;
+}
+
+.signup-container p {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.primary-btn {
+  background-color: #c5050c;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-link a {
+  color: #c5050c;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 /* Feature Boxes */
@@ -145,7 +232,7 @@ main {
   resize: none;
 }
 
-/* Meal Section*/
+/* Meal Section (RIGHT) */
 .meal-section {
   flex: 1;
 }
@@ -263,40 +350,7 @@ main {
   gap: 20px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.form-group label {
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
-.form-group input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.primary-btn {
-  background-color: #c5050c;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.login-link a {
-  color: #c5050c;
-  font-weight: bold;
-  text-decoration: none;
-}
-/* Reuse your card style idea */
+/* Card */
 .card {
   background: #f0f0f0;
   border-radius: 6px;
@@ -352,18 +406,7 @@ main {
   background-color: #bf360c;
 }
 
-.btn {
-  display: inline-block;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
 /* Filter Box */
-
 .filter-box {
   background-color: #3f5f0b;
   color: white;
@@ -405,6 +448,7 @@ main {
 .meal-filter-box {
   background-color: white;
 }
+
 .checkbox-container {
   display: flex;
   flex-direction: column;
@@ -450,7 +494,11 @@ main {
 }
 
 .recipes-container {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  background-color: #e65100;
 }
 
 .recipe-item {
@@ -521,13 +569,4 @@ main {
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
-}
-
-/* Recipes Container */
-.recipes-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 20px;
-  background-color: #e65100;
 }
