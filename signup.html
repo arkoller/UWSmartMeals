@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,6 +15,7 @@
     <main class="signup-page">
       <section class="signup-container">
         <h2>Create an Account</h2>
+        <p id="signupMessage"></p>
         <form id="signupForm" class="signup-form">
           <div class="form-row">
             <div class="form-group">
@@ -90,5 +91,11 @@
         </form>
       </section>
     </main>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <script src="config.js"></script>
+    <script src="signup.js"></script>
   </body>
 </html>
