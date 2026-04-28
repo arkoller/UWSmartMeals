@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #e65100;
 }
 
 /* formatting */
@@ -75,7 +76,7 @@ main {
   background-color: #6a994e;
   color: white;
   text-align: center;
-  font-size: 20px;
+  font-size: 27px;
   font-weight: bold;
   font-style: italic;
   padding: 16px;
@@ -242,6 +243,33 @@ main {
 /* Meal Section (RIGHT) */
 .meal-section {
   flex: 1;
+}
+
+.meal-cards {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+
+.meal-card {
+  background-color: #6a994e;
+  border-radius: 6px;
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+}
+
+.meal-title {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.meal-desc {
+  font-size: 13px;
+  color: #555;
+  margin-top: 5px;
+  padding: 0 8px;
 }
 
 .section-title {
