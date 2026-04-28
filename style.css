@@ -171,11 +171,6 @@ main {
     background 0.2s;
 }
 
-.feature-box:hover {
-  background-color: #2b5d18;
-  transform: translateY(-3px);
-}
-
 .feature-content {
   display: flex;
   align-items: center;
