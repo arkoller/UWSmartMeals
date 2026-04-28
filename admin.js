@@ -1,4 +1,7 @@
 // Admin page logic for adding and deleting recipes from Firebase meal_ideas
+
+console.log("admin.js is connected");
+
 const adminMessage = document.querySelector("#adminMessage");
 const recipeForm = document.querySelector("#addRecipeForm");
 const adminRecipesContainer = document.querySelector("#adminRecipesContainer");
