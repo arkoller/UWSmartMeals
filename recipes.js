@@ -491,39 +491,3 @@ const meals = [
       "https://www.simplywhisked.com/wp-content/uploads/2024/08/Pizza-Salad-2.jpg",
   },
 ];
-
-// async function uploadMeals() {
-//   try {
-//     for (const meal of meals) {
-//       await db.collection("meal_ideas").doc(meal.meal_id).set(meal);
-//     }
-
-//     console.log("All meals uploaded successfully!");
-//   } catch (error) {
-//     console.error("Error uploading meals:", error);
-//   }
-// }
-
-// uploadMeals();
-
-// let avocado_egg = {
-//   meal_id: "1",
-//   meal_name: "Avocado Egg Toast",
-//   description:
-//     "Toast with mashed avocado, hard-boiled eggs, strawberries, and milk.",
-//   grocery_item: ["Bread", "Avocados", "Eggs", "Strawberries", "Milk"],
-//   meal_type: ["Breakfast"],
-//   diet: ["Vegetarian"],
-//   image_url:
-//     "https://www.allrecipes.com/thmb/8NccFzsaq0_OZPDKmf7Yee-aG78=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
-// };
-
-// db.collection("meal_ideas")
-//   .doc(avocado_egg.meal_id)
-//   .set(avocado_egg)
-//   .then(() => {
-//     console.log("Recipe added successfully!");
-//   })
-//   .catch((error) => {
-//     console.error("Error adding recipe:", error);
-//   });
