@@ -571,10 +571,8 @@ document.querySelector('.recipes-container').addEventListener('click', (e) => {
   if (!meal) return;
 
   const queue = JSON.parse(localStorage.getItem('selectedMeals') || '[]');
-  if (!queue.find((m) => m.meal_id === meal.meal_id)) {
-    queue.push(meal);
-    localStorage.setItem('selectedMeals', JSON.stringify(queue));
-  }
+  queue.push({ ...meal, queue_id: `${Date.now()}-${Math.random()}` });
+  localStorage.setItem('selectedMeals', JSON.stringify(queue));
 
   btn.textContent = 'Added!';
   btn.disabled = true;

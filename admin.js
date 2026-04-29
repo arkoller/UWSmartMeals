@@ -10,7 +10,7 @@ let recipeToDeleteId = null;
 
 function showMessage(message, isError = false) {
   adminMessage.textContent = message;
-  adminMessage.style.color = isError ? "#b00020" : "#2e7d32";
+  adminMessage.style.color = isError ? "#ff8a80" : "white";
 }
 
 function getCheckedValues(name) {
