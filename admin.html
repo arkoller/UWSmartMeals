@@ -1,0 +1,123 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Recipes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.html" class="logo">UW SmartMeals</a>
+
+      <div class="auth-buttons">
+        <a href="meal-plans.html" class="btn login">Meal Plan</a>
+        <a href="recipes.html" class="btn signup">Recipes</a>
+        <a href="admin.html" class="btn signup">Admin</a>
+        <a href="index.html" class="btn signup">Log Out</a>
+      </div>
+    </div>
+
+    <div class="admin-page-wrapper">
+      <div class="admin-form-box">
+        <h2>Admin Recipe Manager</h2>
+        <p>Add a new recipe to the meal ideas collection.</p>
+
+        <form id="addRecipeForm">
+          <label for="mealName">Meal Name</label>
+          <input
+            type="text"
+            id="mealName"
+            placeholder="Avocado Egg Toast"
+            required
+          />
+
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            placeholder="Toast with mashed avocado, hard-boiled eggs, strawberries, and milk."
+            required
+          ></textarea>
+
+          <label for="groceryItems">Grocery Items</label>
+          <input
+            type="text"
+            id="groceryItems"
+            placeholder="Bread, Avocados, Eggs, Strawberries, Milk"
+            required
+          />
+
+          <label for="imageUrl">Image URL</label>
+          <input
+            type="url"
+            id="imageUrl"
+            placeholder="https://example.com/image.jpg"
+            required
+          />
+
+          <label>Meal Type</label>
+          <div class="admin-checkbox-group">
+            <label
+              ><input type="checkbox" name="mealType" value="Breakfast" />
+              Breakfast</label
+            >
+            <label
+              ><input type="checkbox" name="mealType" value="Lunch" />
+              Lunch</label
+            >
+            <label
+              ><input type="checkbox" name="mealType" value="Dinner" />
+              Dinner</label
+            >
+          </div>
+
+          <label>Diet</label>
+          <div class="admin-checkbox-group">
+            <label
+              ><input type="checkbox" name="diet" value="Vegetarian" />
+              Vegetarian</label
+            >
+            <label
+              ><input type="checkbox" name="diet" value="Vegan" /> Vegan</label
+            >
+            <label
+              ><input type="checkbox" name="diet" value="Gluten Free" /> Gluten
+              Free</label
+            >
+          </div>
+
+          <button type="submit" class="admin-submit-button">Submit</button>
+          <p id="adminMessage" class="admin-message"></p>
+        </form>
+      </div>
+
+      <div class="admin-recipes-section">
+        <h2>Current Recipes</h2>
+        <div class="recipes-container" id="adminRecipesContainer"></div>
+      </div>
+    </div>
+
+    <div id="deleteModal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <h3>Permanently remove this recipe?</h3>
+        <p>
+          This will delete the recipe from both the admin page and the recipes
+          page.
+        </p>
+        <div class="modal-actions">
+          <button id="confirmDeleteButton" class="modal-delete-button">
+            Delete
+          </button>
+          <button id="cancelDeleteButton" class="modal-cancel-button">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
