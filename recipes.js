@@ -1,5 +1,3 @@
-const container = document.querySelector("#mealsContainer");
-
 const meals = [
   {
     meal_id: "1",
@@ -8,7 +6,7 @@ const meals = [
       "Toast with mashed avocado, hard-boiled eggs, strawberries, and milk.",
     grocery_item: ["Bread", "Avocados", "Eggs", "Strawberries", "Milk"],
     meal_type: "Breakfast",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://www.allrecipes.com/thmb/8NccFzsaq0_OZPDKmf7Yee-aG78=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
   },
@@ -18,7 +16,7 @@ const meals = [
     description: "Scrambled eggs with buttered toast, blueberries, and yogurt.",
     grocery_item: ["Eggs", "Bread", "Butter", "Blueberries", "Yogurt"],
     meal_type: "Breakfast",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://hips.hearstapps.com/hmg-prod/images/scrambled-eggs-socialindex-web-0066-lp-del039925-67eb04f9a151b.jpg?crop=0.502xw:1.00xh;0.464xw,0&resize=1200:*",
   },
@@ -38,7 +36,7 @@ const meals = [
       "Bananas",
     ],
     meal_type: "Breakfast",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://images.ctfassets.net/hhv516v5f7sj/1bsvc4aebHaMMuLkq18chd/fa9276c9012407fd5e7861bdf6ba01d2/SausageChub_FrenchToast_1000x1000.jpg",
   },
@@ -55,7 +53,7 @@ const meals = [
       "Strawberries",
     ],
     meal_type: "Breakfast",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://quisinequeenb.com/wp-content/uploads/2019/10/White-Truffle-Croissant-Sandwich_closeup-1024x998.jpg",
   },
@@ -73,7 +71,7 @@ const meals = [
       "Bacon",
     ],
     meal_type: "Breakfast",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://i0.wp.com/frugalhausfrau.com/wp-content/uploads/2019/03/Bacon-Waffles-4.jpg?ssl=1",
   },
@@ -107,7 +105,7 @@ const meals = [
       "Orange Juice",
     ],
     meal_type: "Breakfast",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://www.lemontreedwelling.com/wp-content/uploads/2021/01/chilaquiles-featured.jpg",
   },
@@ -167,7 +165,7 @@ const meals = [
       "Apples",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://enwnutrition.com/wp-content/uploads/2025/04/sourdough-turkey-sandwich-feature-square.jpeg",
   },
@@ -184,7 +182,7 @@ const meals = [
       "Milk",
     ],
     meal_type: "Lunch",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://youplateit.com.au/wp-content/uploads/2022/01/Quattro-Formaggi-Pizza-Four-Cheese-0122-Plated.jpg",
   },
@@ -200,7 +198,7 @@ const meals = [
       "Canned Tomato Soup",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://frommichigantothetable.com/wp-content/uploads/2022/03/MICHIGANTOTHETABLE_3-800x1200.jpg",
   },
@@ -218,7 +216,7 @@ const meals = [
       "Pita Chips",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://www.cookingclassy.com/wp-content/uploads/2016/03/greek_grilled_chicken_hummus_wrap2..jpg",
   },
@@ -254,7 +252,7 @@ const meals = [
       "Apple Juice",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://caitsplate.com/wp-core/wp-content/uploads/2019/11/IMG_7089.jpg",
   },
@@ -274,7 +272,7 @@ const meals = [
       "Lime Dressing",
     ],
     meal_type: "Lunch",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url:
       "https://www.eatingwell.com/thmb/t-tzbOfVz5ACCOf4IpxNEFxgTLo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/3926485-970b04d852e84ad59756905121455934.jpg",
   },
@@ -293,7 +291,7 @@ const meals = [
       "Yogurt",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://hips.hearstapps.com/hmg-prod/images/bagelandlox-4-1647470138.jpg?crop=0.673xw:1.00xh;0.155xw,0&resize=1200:*",
   },
@@ -310,7 +308,7 @@ const meals = [
       "Ranch Dressing",
     ],
     meal_type: "Lunch",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://krollskorner.com/wp-content/uploads/2021/09/SausageandPastaBlog5.jpg",
   },
@@ -327,7 +325,7 @@ const meals = [
       "Soy Milk",
     ],
     meal_type: "Lunch",
-    diet: ["Vegetarian", "Vegan"],
+    diet: ["Vegetarian", "Vegan", "Dairy-Free", "Nut-Free"],
     image_url:
       "https://jessicainthekitchen.com/wp-content/uploads/2021/06/Teriyaki-Tofu-14.jpg",
   },
@@ -347,7 +345,7 @@ const meals = [
       "Salsa",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://www.simplysissom.com/wp-content/uploads/2019/07/Healthy-Burrito-Bowls-With-Cilantro-Lime-Dressing-FI-1.jpg",
   },
@@ -363,7 +361,7 @@ const meals = [
       "Butter",
     ],
     meal_type: "Dinner",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url: "",
   },
   {
@@ -380,7 +378,7 @@ const meals = [
       "Refried Beans",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url: "",
   },
   {
@@ -395,7 +393,7 @@ const meals = [
       "Ketchup",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Dairy-Free", "Nut-Free"],
     image_url: "",
   },
   {
@@ -413,7 +411,7 @@ const meals = [
       "Ranch Dressing",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url: "",
   },
   {
@@ -422,7 +420,7 @@ const meals = [
     description: "Sweet chicken with rice, vegetables, and milk.",
     grocery_item: ["Mandarin Chicken", "Rice", "Mixed Vegetables", "Milk"],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url: "",
   },
   {
@@ -437,7 +435,7 @@ const meals = [
       "Edamame",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Dairy-Free", "Nut-Free"],
     image_url: "",
   },
   {
@@ -453,7 +451,7 @@ const meals = [
       "Orange Juice",
     ],
     meal_type: "Dinner",
-    diet: ["Vegetarian"],
+    diet: ["Vegetarian", "Nut-Free"],
     image_url: "",
   },
   {
@@ -469,7 +467,7 @@ const meals = [
       "Tortilla Chips",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://res.cloudinary.com/hksqkdlah/image/upload/c_fill,dpr_2.0,f_auto,fl_lossy.progressive.strip_profile,g_faces:auto,q_auto:low/SFS_Best_Ground_Beef_Chili_75211_h9hljj",
   },
@@ -486,8 +484,79 @@ const meals = [
       "Apple Juice",
     ],
     meal_type: "Dinner",
-    diet: [],
+    diet: ["Nut-Free"],
     image_url:
       "https://www.simplywhisked.com/wp-content/uploads/2024/08/Pizza-Salad-2.jpg",
   },
 ];
+
+function renderMeals(mealsToShow) {
+  const container = document.querySelector(".recipes-container");
+  container.innerHTML = "";
+
+  if (mealsToShow.length === 0) {
+    container.innerHTML = '<p class="no-results">No recipes found.</p>';
+    return;
+  }
+
+  mealsToShow.forEach((meal) => {
+    const item = document.createElement("div");
+    item.className = "recipe-item";
+
+    const imgHtml = meal.image_url
+      ? `<img src="${meal.image_url}" alt="${meal.meal_name}" class="recipe-image">`
+      : "";
+
+    item.innerHTML = `
+      ${imgHtml}
+      <div class="recipe-details">
+        <span class="recipe-text">${meal.meal_name}</span>
+        <div class="description-row">
+          <div class="recipe-description">${meal.description}</div>
+          <button class="add-button" data-meal-id="${meal.meal_id}">Add to Meal Plan</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+function applyFilters() {
+  const query = document.getElementById("search-input").value.toLowerCase().trim();
+  const selectedDiets = Array.from(
+    document.querySelectorAll('input[name="diet-filter"]:checked')
+  ).map((cb) => cb.value);
+  const selectedMealTypes = Array.from(
+    document.querySelectorAll('input[name="meal-type-filter"]:checked')
+  ).map((cb) => cb.value);
+
+  const filtered = meals.filter((meal) => {
+    const textMatch =
+      !query ||
+      meal.meal_name.toLowerCase().includes(query) ||
+      meal.description.toLowerCase().includes(query) ||
+      meal.grocery_item.some((item) => item.toLowerCase().includes(query));
+
+    const dietMatch =
+      selectedDiets.length === 0 ||
+      selectedDiets.every((diet) => meal.diet.includes(diet));
+
+    const mealTypeMatch =
+      selectedMealTypes.length === 0 ||
+      selectedMealTypes.includes(meal.meal_type);
+
+    return textMatch && dietMatch && mealTypeMatch;
+  });
+
+  renderMeals(filtered);
+}
+
+document.getElementById("search-input").addEventListener("input", applyFilters);
+document.getElementById("search-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") applyFilters();
+});
+document
+  .querySelectorAll('input[name="diet-filter"], input[name="meal-type-filter"]')
+  .forEach((cb) => cb.addEventListener("change", applyFilters));
+
+renderMeals(meals);

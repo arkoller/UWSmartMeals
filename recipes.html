@@ -26,121 +26,51 @@
         <div class="meal-filter-box">
           <div class="checkbox-container">
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
+              <input type="checkbox" id="vegetarian" name="diet-filter" value="Vegetarian" />
               <label for="vegetarian" class="checkbox-text">Vegetarian</label>
             </div>
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
+              <input type="checkbox" id="vegan" name="diet-filter" value="Vegan" />
               <label for="vegan" class="checkbox-text">Vegan</label>
             </div>
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
-              <label for="gluten-free" class="checkbox-text">Gluten-Free</label>
+              <input type="checkbox" id="dairy-free" name="diet-filter" value="Dairy-Free" />
+              <label for="dairy-free" class="checkbox-text">Dairy-Free</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="nut-free" name="diet-filter" value="Nut-Free" />
+              <label for="nut-free" class="checkbox-text">Nut-Free</label>
             </div>
           </div>
         </div>
 
-        <label>Budget</label>
-        <div class="meal-filter-box">
-          <div class="checkbox-container">
-            <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
-              <label for="$" class="checkbox-text">$ Low</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
-              <label for="$$" class="checkbox-text">$$ Medium</label>
-            </div>
-            <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
-              <label for="$$$" class="checkbox-text">$$$ High</label>
-            </div>
-          </div>
-        </div>
         <label>Meal</label>
-
         <div class="meal-filter-box">
           <div class="checkbox-container">
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
+              <input type="checkbox" id="breakfast" name="meal-type-filter" value="Breakfast" />
               <label for="breakfast" class="checkbox-text">Breakfast</label>
             </div>
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
+              <input type="checkbox" id="lunch" name="meal-type-filter" value="Lunch" />
               <label for="lunch" class="checkbox-text">Lunch</label>
             </div>
             <div class="checkbox-item">
-              <input type="checkbox" name="meal filter" />
+              <input type="checkbox" id="dinner" name="meal-type-filter" value="Dinner" />
               <label for="dinner" class="checkbox-text">Dinner</label>
             </div>
           </div>
-        </div>
-        <div style="text-align: center; margin-top: 20px">
-          <button class="btn signup" style="background-color: #e65100">
-            Submit
-          </button>
         </div>
       </div>
       <div class="search-container">
         <h3>Search for Meals</h3>
         <input
+          id="search-input"
           type="text"
           placeholder="Search for Meals..."
           class="search-input"
         />
-        <div class="recipes-container">
-          <div class="recipe-item">
-            <img
-              src="Images/Recipes.html images/pasta-salad-04-2.jpg"
-              alt="Pasta Salad"
-              class="recipe-image"
-            />
-            <div class="recipe-details">
-              <span class="recipe-text">Pasta Salad</span>
-              <div class="description-row">
-                <div class="recipe-description">
-                  Ingredients: Pasta, Mozzarella, Cucumber, Tomato. A refreshing
-                  dish perfect for summer meals.
-                </div>
-                <button class="add-button">Add to Meal Plan</button>
-              </div>
-            </div>
-          </div>
-          <div class="recipe-item">
-            <img
-              src="Images/Recipes.html images/peanut-butter-toast-image.jpg"
-              alt="Peanut Butter & Banana Toast"
-              class="recipe-image"
-            />
-            <div class="recipe-details">
-              <span class="recipe-text">Peanut Butter & Banana Toast</span>
-              <div class="description-row">
-                <div class="recipe-description">
-                  A simple and healthy breakfast with peanut butter and banana
-                  on toast.
-                </div>
-                <button class="add-button">Add to Meal Plan</button>
-              </div>
-            </div>
-          </div>
-          <div class="recipe-item">
-            <img
-              src="Images/Recipes.html images/kf-easy-chicken-tacos-gwfh-mediumSquareAt3X.jpg"
-              alt="Chicken Tacos"
-              class="recipe-image"
-            />
-            <div class="recipe-details">
-              <span class="recipe-text">Chicken Tacos</span>
-              <div class="description-row">
-                <div class="recipe-description">
-                  Spicy chicken tacos with fresh toppings, served with salsa and
-                  guacamole for extra flavor.
-                </div>
-                <button class="add-button">Add to Meal Plan</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="recipes-container"></div>
       </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
