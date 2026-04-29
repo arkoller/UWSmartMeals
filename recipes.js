@@ -362,7 +362,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Vegetarian", "Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://thumbs.dreamstime.com/b/homemade-indian-vegetarian-dinner-chana-masala-palak-paneer-curry-451234642.jpg",
   },
   {
     meal_id: "23",
@@ -379,7 +380,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://carriecarvalho.com/wp-content/uploads/2022/11/beef-blackbean-tacos_4372.jpg",
   },
   {
     meal_id: "24",
@@ -394,7 +396,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Dairy-Free", "Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://marleyspoon.com/media/recipes/242832/main_photos/medium/fast_actual_veggies_black_bean_cheeseburger-87a3f7e2734a9b7c514998290bb805d2.jpeg",
   },
   {
     meal_id: "25",
@@ -412,7 +415,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://www.slenderkitchen.com/sites/default/files/styles/gsd-16x9/public/recipe_images/spicy-chicken-quesadillas_0.jpg",
   },
   {
     meal_id: "26",
@@ -421,7 +425,8 @@ const meals = [
     grocery_item: ["Mandarin Chicken", "Rice", "Mixed Vegetables", "Milk"],
     meal_type: "Dinner",
     diet: ["Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://40aprons.com/wp-content/uploads/2021/08/mandarin-chicken-8.jpg",
   },
   {
     meal_id: "27",
@@ -436,7 +441,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Dairy-Free", "Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://makeandtakes.com/wp-content/uploads/ramen-bowl-with-pork-egg-and-edamame.jpg",
   },
   {
     meal_id: "28",
@@ -452,7 +458,8 @@ const meals = [
     ],
     meal_type: "Dinner",
     diet: ["Vegetarian", "Nut-Free"],
-    image_url: "",
+    image_url:
+      "https://foodbyjonister.com/wp-content/uploads/2018/04/nachos4.jpg",
   },
   {
     meal_id: "29",
@@ -522,12 +529,15 @@ function renderMeals(mealsToShow) {
 }
 
 function applyFilters() {
-  const query = document.getElementById("search-input").value.toLowerCase().trim();
+  const query = document
+    .getElementById("search-input")
+    .value.toLowerCase()
+    .trim();
   const selectedDiets = Array.from(
-    document.querySelectorAll('input[name="diet-filter"]:checked')
+    document.querySelectorAll('input[name="diet-filter"]:checked'),
   ).map((cb) => cb.value);
   const selectedMealTypes = Array.from(
-    document.querySelectorAll('input[name="meal-type-filter"]:checked')
+    document.querySelectorAll('input[name="meal-type-filter"]:checked'),
   ).map((cb) => cb.value);
 
   const filtered = meals.filter((meal) => {
@@ -562,24 +572,24 @@ document
 renderMeals(meals);
 
 // Save meal to localStorage queue when "Add to Meal Plan" is clicked
-document.querySelector('.recipes-container').addEventListener('click', (e) => {
-  const btn = e.target.closest('.add-button');
+document.querySelector(".recipes-container").addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-button");
   if (!btn) return;
 
   const mealId = btn.dataset.mealId;
   const meal = meals.find((m) => m.meal_id === mealId);
   if (!meal) return;
 
-  const queue = JSON.parse(localStorage.getItem('selectedMeals') || '[]');
+  const queue = JSON.parse(localStorage.getItem("selectedMeals") || "[]");
   if (!queue.find((m) => m.meal_id === meal.meal_id)) {
     queue.push(meal);
-    localStorage.setItem('selectedMeals', JSON.stringify(queue));
+    localStorage.setItem("selectedMeals", JSON.stringify(queue));
   }
 
-  btn.textContent = 'Added!';
+  btn.textContent = "Added!";
   btn.disabled = true;
   setTimeout(() => {
-    btn.textContent = 'Add to Meal Plan';
+    btn.textContent = "Add to Meal Plan";
     btn.disabled = false;
   }, 1500);
 });
