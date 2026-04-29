@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,10 +13,7 @@
       <a href="index.html" class="logo">UW SmartMeals</a>
 
       <div class="auth-buttons">
-        <a href="meal-plans.html" class="btn login">Meal Plan</a>
-        <a href="recipes.html" class="btn signup">Recipes</a>
-        <a href="admin.html" class="btn signup">Admin</a>
-        <a href="index.html" class="btn signup">Log Out</a>
+        <a href="#" id="adminLogoutBtn" class="btn signup">Log Out</a>
       </div>
     </div>
 
@@ -35,6 +32,14 @@
           <textarea id="description" required></textarea>
 
           <label for="groceryItems">Grocery Items</label>
+          <small
+            style="
+              color: rgba(255, 255, 255, 0.75);
+              margin-top: -6px;
+              display: block;
+            "
+            >Separate grocery items by comma.</small
+          >
           <input type="text" id="groceryItems" required />
 
           <label for="imageUrl">Image URL</label>
@@ -76,14 +81,14 @@
             </div>
           </div>
 
-          <button type="submit" class="btn submit-btn">Submit</button>
+          <button type="submit" class="submit-btn">Submit</button>
           <p id="adminMessage" class="admin-message"></p>
         </form>
       </div>
 
       <!-- RIGHT: RECIPES -->
       <div class="recipes-section">
-        <div class="recipes-title-bar">Current Recipes</div>
+        <h3>Current Recipes</h3>
         <div class="recipes-container" id="adminRecipesContainer"></div>
       </div>
     </div>

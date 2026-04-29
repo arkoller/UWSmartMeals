@@ -50,10 +50,9 @@ function renderAdminRecipe(doc) {
     />
     <div class="recipe-details">
       <span class="recipe-text">${recipe.meal_name || "Untitled Recipe"}</span>
-      <div class="description-row">
-        <div class="recipe-description">
-          <strong>Ingredients:</strong> ${formatIngredients(recipe)}. ${recipe.description || ""}
-        </div>
+      <div class="recipe-description">
+        <p><strong>Description:</strong> ${recipe.description || "No description available."}</p>
+        <p><strong>Ingredients:</strong> ${formatIngredients(recipe)}</p>
       </div>
     </div>
   `;
@@ -186,4 +185,11 @@ deleteModal.addEventListener("click", (e) => {
   if (e.target === deleteModal) {
     closeDeleteModal();
   }
+});
+
+document.getElementById("adminLogoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+    window.location.href = "index.html";
+  });
 });

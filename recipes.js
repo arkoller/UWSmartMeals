@@ -560,3 +560,41 @@ document
   .forEach((cb) => cb.addEventListener("change", applyFilters));
 
 renderMeals(meals);
+
+// Save meal to localStorage queue when "Add to Meal Plan" is clicked
+document.querySelector('.recipes-container').addEventListener('click', (e) => {
+  const btn = e.target.closest('.add-button');
+  if (!btn) return;
+
+  const mealId = btn.dataset.mealId;
+  const meal = meals.find((m) => m.meal_id === mealId);
+  if (!meal) return;
+
+  const queue = JSON.parse(localStorage.getItem('selectedMeals') || '[]');
+  if (!queue.find((m) => m.meal_id === meal.meal_id)) {
+    queue.push(meal);
+    localStorage.setItem('selectedMeals', JSON.stringify(queue));
+  }
+
+  btn.textContent = 'Added!';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Add to Meal Plan';
+    btn.disabled = false;
+  }, 1500);
+});
+
+auth.onAuthStateChanged(async (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+  try {
+    const userDoc = await db.collection("user_accounts").doc(user.uid).get();
+    if (userDoc.exists && userDoc.data().isAdmin === true) {
+      window.location.href = "admin.html";
+    }
+  } catch (error) {
+    console.error("Error checking user role:", error);
+  }
+});

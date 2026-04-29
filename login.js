@@ -8,10 +8,15 @@ loginForm.addEventListener("submit", async (event) => {
   const password = document.querySelector("#loginPassword").value;
 
   try {
-    await auth.signInWithEmailAndPassword(email, password);
-
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
     loginMessage.textContent = "Login successful!";
-    window.location.href = "meal-plans.html";
+
+    const userDoc = await db.collection("user_accounts").doc(userCredential.user.uid).get();
+    if (userDoc.exists && userDoc.data().isAdmin === true) {
+      window.location.href = "admin.html";
+    } else {
+      window.location.href = "meal-plans.html";
+    }
   } catch (error) {
     switch (error.code) {
       case "auth/user-not-found":

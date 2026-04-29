@@ -409,7 +409,7 @@ main {
   margin-right: 20px;
 }
 
-.filter-box input,
+.filter-box input:not([type="checkbox"]),
 .filter-box textarea {
   width: 100%;
   box-sizing: border-box;
@@ -418,6 +418,7 @@ main {
   border-radius: 4px;
   margin-bottom: 12px;
   font-size: 14px;
+  font-family: inherit;
 }
 
 .filter-box h3 {
@@ -586,6 +587,16 @@ main {
 /* Recipes Section (admin right panel) */
 .recipes-section {
   flex: 1;
+  background-color: #3f5f0b;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.recipes-section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
 /* Admin Form */
@@ -599,6 +610,21 @@ main {
   flex: 0 0 360px;
   padding: 30px;
   box-sizing: border-box;
+  max-height: 680px;
+  overflow-y: auto;
+}
+
+.submit-btn {
+  background-color: #e65100;
+  color: white;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 8px;
 }
 
 .admin-form input,
@@ -638,6 +664,31 @@ main {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.admin-form-box .checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+/* Admin recipe card overrides */
+.admin-recipe-item .recipe-description {
+  height: auto;
+  display: block;
+  padding: 10px 12px;
+  align-items: unset;
+}
+
+.admin-recipe-item .recipe-description p {
+  margin: 4px 0;
+}
+
+.admin-recipe-item .recipe-details {
+  margin-right: 20px;
 }
 
 /* Delete Button */
@@ -711,4 +762,224 @@ main {
   padding: 8px 14px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* ── Meal Plan Page ──────────────────────────────────────────────── */
+
+/* Selected Meals Queue */
+.meal-queue-section {
+  padding: 0 40px 25px;
+}
+
+.meal-queue {
+  background-color: #3f5f0b;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 90px;
+  align-items: flex-start;
+  align-content: flex-start;
+  transition: background 0.15s, border 0.15s;
+}
+
+.meal-queue.queue-drag-over {
+  background-color: #2d5a08;
+  outline: 2px dashed #a5d6a7;
+}
+
+.queue-empty {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin: auto;
+  text-align: center;
+}
+
+.queue-empty a {
+  color: #a5d6a7;
+  text-decoration: underline;
+}
+
+.queue-card {
+  background: white;
+  border-radius: 6px;
+  padding: 8px 12px 8px 10px;
+  cursor: grab;
+  width: 145px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  position: relative;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.queue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.queue-card.dragging {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+.queue-card-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  padding-right: 16px;
+}
+
+.queue-card-type {
+  font-size: 11px;
+  color: #777;
+  margin-top: 3px;
+}
+
+.remove-queue-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  color: #666;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.remove-queue-btn:hover {
+  background: rgba(176, 0, 32, 0.8);
+  color: white;
+}
+
+/* 7-Day Plan Grid */
+.plan-grid-section {
+  padding: 0 40px 40px;
+  overflow-x: auto;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: 110px repeat(7, 1fr);
+  gap: 6px;
+  min-width: 760px;
+}
+
+.plan-corner {
+  background: transparent;
+}
+
+.plan-day-header {
+  background-color: #e65100;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 8px 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan-meal-label {
+  background-color: #33691e;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 8px 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px;
+}
+
+.drop-zone {
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px dashed #bbb;
+  border-radius: 6px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 4px;
+  box-sizing: border-box;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.drop-zone.drag-over {
+  background: #c8e6c9;
+  border-color: #33691e;
+  border-style: solid;
+}
+
+.drop-hint {
+  color: #bbb;
+  font-size: 11px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.placed-meal {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #33691e;
+  border-radius: 4px;
+  cursor: grab;
+  padding: 20px 6px 6px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.placed-meal.dragging {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+.placed-meal-name {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.remove-meal-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.remove-meal-btn:hover {
+  background: rgba(176, 0, 32, 0.85);
 }
