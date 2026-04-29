@@ -41,22 +41,22 @@ function renderAdminRecipe(doc) {
   recipeCard.classList.add("recipe-item", "admin-recipe-item");
 
   recipeCard.innerHTML = `
-   <button class="delete-recipe-button" aria-label="Delete recipe" data-id="${recipe.meal_id}">×</button>
-   <img
-     src="${getImageUrl(recipe)}"
-     alt="${recipe.meal_name || "Recipe image"}"
-     class="recipe-image"
-     onerror="this.src='Images/UWSmartMealsBckgrnd.webp'"
-   />
-   <div class="recipe-details">
-     <span class="recipe-text">${recipe.meal_name || "Untitled Recipe"}</span>
-     <div class="description-row">
-       <div class="recipe-description admin-recipe-description">
-         <strong>Ingredients:</strong>&nbsp;${formatIngredients(recipe)}. ${recipe.description || ""}
-       </div>
-     </div>
-   </div>
- `;
+    <button class="delete-recipe-button" data-id="${recipe.meal_id}">×</button>
+    <img
+      src="${getImageUrl(recipe)}"
+      alt="${recipe.meal_name || "Recipe image"}"
+      class="recipe-image"
+      onerror="this.src='Images/UWSmartMealsBckgrnd.webp'"
+    />
+    <div class="recipe-details">
+      <span class="recipe-text">${recipe.meal_name || "Untitled Recipe"}</span>
+      <div class="description-row">
+        <div class="recipe-description">
+          <strong>Ingredients:</strong> ${formatIngredients(recipe)}. ${recipe.description || ""}
+        </div>
+      </div>
+    </div>
+  `;
 
   adminRecipesContainer.appendChild(recipeCard);
 }
@@ -161,8 +161,9 @@ recipeForm.addEventListener("submit", async (event) => {
 });
 
 adminRecipesContainer.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delete-recipe-button")) {
-    openDeleteModal(event.target.dataset.id);
+  const deleteButton = event.target.closest(".delete-recipe-button");
+  if (deleteButton) {
+    openDeleteModal(deleteButton.dataset.id);
   }
 });
 
@@ -180,3 +181,9 @@ confirmDeleteButton.addEventListener("click", async () => {
 });
 
 cancelDeleteButton.addEventListener("click", closeDeleteModal);
+
+deleteModal.addEventListener("click", (e) => {
+  if (e.target === deleteModal) {
+    closeDeleteModal();
+  }
+});

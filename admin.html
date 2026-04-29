@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -5,7 +6,9 @@
     <title>Admin Recipes</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <!-- HEADER -->
     <div class="header">
       <a href="index.html" class="logo">UW SmartMeals</a>
 
@@ -17,92 +20,80 @@
       </div>
     </div>
 
-    <div class="admin-page-wrapper">
-      <div class="admin-form-box">
-        <h2>Admin Recipe Manager</h2>
+    <!-- MAIN LAYOUT -->
+    <div class="content-wrapper">
+      <!-- LEFT: ADMIN FORM -->
+      <div class="filter-box admin-form-box">
+        <h2>Add a Recipe</h2>
         <p>Add a new recipe to the meal ideas collection.</p>
 
-        <form id="addRecipeForm">
+        <form id="addRecipeForm" class="admin-form">
           <label for="mealName">Meal Name</label>
-          <input
-            type="text"
-            id="mealName"
-            placeholder="Avocado Egg Toast"
-            required
-          />
+          <input type="text" id="mealName" required />
 
           <label for="description">Description</label>
-          <textarea
-            id="description"
-            placeholder="Toast with mashed avocado, hard-boiled eggs, strawberries, and milk."
-            required
-          ></textarea>
+          <textarea id="description" required></textarea>
 
           <label for="groceryItems">Grocery Items</label>
-          <input
-            type="text"
-            id="groceryItems"
-            placeholder="Bread, Avocados, Eggs, Strawberries, Milk"
-            required
-          />
+          <input type="text" id="groceryItems" required />
 
           <label for="imageUrl">Image URL</label>
-          <input
-            type="url"
-            id="imageUrl"
-            placeholder="https://example.com/image.jpg"
-            required
-          />
+          <input type="url" id="imageUrl" required />
 
-          <label>Meal Type</label>
-          <div class="admin-checkbox-group">
-            <label
-              ><input type="checkbox" name="mealType" value="Breakfast" />
-              Breakfast</label
-            >
-            <label
-              ><input type="checkbox" name="mealType" value="Lunch" />
-              Lunch</label
-            >
-            <label
-              ><input type="checkbox" name="mealType" value="Dinner" />
-              Dinner</label
-            >
+          <div class="group-box">
+            <label>Meal Type</label>
+            <div class="checkbox-group">
+              <label
+                ><input type="checkbox" name="mealType" value="Breakfast" />
+                Breakfast</label
+              >
+              <label
+                ><input type="checkbox" name="mealType" value="Lunch" />
+                Lunch</label
+              >
+              <label
+                ><input type="checkbox" name="mealType" value="Dinner" />
+                Dinner</label
+              >
+            </div>
           </div>
 
-          <label>Diet</label>
-          <div class="admin-checkbox-group">
-            <label
-              ><input type="checkbox" name="diet" value="Vegetarian" />
-              Vegetarian</label
-            >
-            <label
-              ><input type="checkbox" name="diet" value="Vegan" /> Vegan</label
-            >
-            <label
-              ><input type="checkbox" name="diet" value="Gluten Free" /> Gluten
-              Free</label
-            >
+          <div class="group-box">
+            <label>Diet</label>
+            <div class="checkbox-group">
+              <label
+                ><input type="checkbox" name="diet" value="Vegetarian" />
+                Vegetarian</label
+              >
+              <label
+                ><input type="checkbox" name="diet" value="Vegan" />
+                Vegan</label
+              >
+              <label
+                ><input type="checkbox" name="diet" value="Gluten Free" />
+                Gluten Free</label
+              >
+            </div>
           </div>
 
-          <button type="submit" class="admin-submit-button">Submit</button>
+          <button type="submit" class="btn submit-btn">Submit</button>
           <p id="adminMessage" class="admin-message"></p>
         </form>
       </div>
 
-      <div class="admin-recipes-section">
-        <h2>Current Recipes</h2>
+      <!-- RIGHT: RECIPES -->
+      <div class="recipes-section">
+        <div class="recipes-title-bar">Current Recipes</div>
         <div class="recipes-container" id="adminRecipesContainer"></div>
       </div>
     </div>
 
+    <!-- DELETE MODAL -->
     <div id="deleteModal" class="modal-overlay hidden">
       <div class="modal-box">
         <h3>Permanently remove this recipe?</h3>
-        <p>
-          This will delete the recipe from both the admin page and the recipes
-          page.
-        </p>
+        <p>This will delete the recipe from UWSmartMeals.</p>
+
         <div class="modal-actions">
           <button id="confirmDeleteButton" class="modal-delete-button">
             Delete
@@ -114,9 +105,11 @@
       </div>
     </div>
 
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
     <script src="config.js"></script>
     <script src="admin.js"></script>
   </body>
