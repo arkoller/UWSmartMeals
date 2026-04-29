@@ -446,7 +446,7 @@ main {
   background-color: #3f5f0b;
   color: white;
   padding: 20px;
-  flex: 0 0 20%;
+  flex: 0 0 230px;
   border-radius: 8px;
   box-sizing: border-box;
   margin-right: 20px;
@@ -481,7 +481,8 @@ main {
 
 /* Checkboxes */
 .meal-filter-box {
-  background-color: white;
+  background-color: #3f5f0b;
+  padding: 4px 0;
 }
 
 .checkbox-container {
@@ -497,19 +498,40 @@ main {
 }
 
 .checkbox-text {
-  color: black;
+  color: white;
   margin-left: 8px;
   white-space: nowrap;
+}
+
+.filter-box input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.filter-box input[type="checkbox"]:checked {
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%233f5f0b' d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Search Container */
 .search-container {
   background-color: #3f5f0b;
   color: white;
-  padding: 20px 40px 20px 20px;
-  flex: 0 0 70%;
+  padding: 20px;
+  flex: 1;
   border-radius: 8px;
   box-sizing: border-box;
+  min-width: 0;
 }
 
 .search-container h3 {
@@ -534,6 +556,14 @@ main {
   gap: 20px;
   padding-top: 20px;
   background-color: #e65100;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.no-results {
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
 .recipe-item {
@@ -554,22 +584,26 @@ main {
 .recipe-details {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 .recipe-text {
-  font-size: 16px;
+  font-size: 18px;
   color: white;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .recipe-description {
   background: white;
-  border: 1px solid black;
+  border: none;
   padding: 8px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 15px;
   color: black;
-  width: 550px;
+  flex: 1;
+  min-width: 0;
   height: 60px;
   display: flex;
   align-items: center;
@@ -583,9 +617,9 @@ main {
 }
 
 .add-button {
-  background: white;
-  border: 1px solid black;
-  color: black;
+  background: #2e7d32;
+  border: 1px solid #2e7d32;
+  color: white;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
