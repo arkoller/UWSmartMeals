@@ -23,14 +23,14 @@ signupForm.addEventListener("submit", async (event) => {
     const userInfo = await auth.createUserWithEmailAndPassword(email, password);
     const user = userInfo.user;
 
-    // Store additional user data in Firestore
+    // Store user data in Firestore
     await db.collection("user_accounts").doc(user.uid).set({
       uid: user.uid,
       firstName: firstName,
       lastName: lastName,
       username: username,
       email: email,
-      role: "student",
+      isAdmin: false,
     });
 
     signupMessage.textContent = "Account created successfully!";
