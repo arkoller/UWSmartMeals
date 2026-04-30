@@ -1,8 +1,9 @@
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MEAL_TYPES = ['Breakfast', 'Lunch', 'Dinner'];
 
 let draggedMeal = null;
 let dragSource = null; // 'queue' | slot key string like '0-breakfast'
+let currentUser = null;
 
 // ── Persistence ────────────────────────────────────────────────────
 
@@ -17,6 +18,48 @@ function getPlan() {
 }
 function setPlan(obj) {
   localStorage.setItem('mealPlan', JSON.stringify(obj));
+  if (currentUser) syncGroceryList(currentUser.uid);
+}
+
+// ── Grocery List Sync ──────────────────────────────────────────────
+
+function syncGroceryList(uid) {
+  const plan = getPlan();
+
+  // Collect all placed meals
+  const placedMeals = Object.values(plan);
+
+  // Build ingredient → meal count map (lowercase-trimmed keys)
+  const ingredientMap = {}; // key → { display: string, count: number }
+  placedMeals.forEach((meal) => {
+    if (!Array.isArray(meal.grocery_item)) return;
+    meal.grocery_item.forEach((item) => {
+      const key = item.trim().toLowerCase();
+      if (!key) return;
+      if (ingredientMap[key]) {
+        ingredientMap[key].count += 1;
+      } else {
+        ingredientMap[key] = { display: item.trim(), count: 1 };
+      }
+    });
+  });
+
+  // Fetch existing checked state, then write merged doc
+  const docRef = db.collection('grocery_lists').doc(uid);
+  docRef.get().then((snap) => {
+    const existing = snap.exists ? (snap.data().items || []) : [];
+    const checkedMap = {};
+    existing.forEach((i) => { checkedMap[i.key] = i.checked || false; });
+
+    const items = Object.entries(ingredientMap).map(([key, val]) => ({
+      key,
+      display: val.display,
+      count: val.count,
+      checked: checkedMap[key] || false,
+    }));
+
+    docRef.set({ items });
+  }).catch(console.error);
 }
 
 // ── Queue ──────────────────────────────────────────────────────────
@@ -200,20 +243,32 @@ function renderPlan() {
         <span class="placed-meal-name">${meal.meal_name}</span>
       `;
 
+      // Track drag vs click
+      placed._didDrag = false;
+
       placed.addEventListener('dragstart', (e) => {
+        placed._didDrag = true;
         draggedMeal = meal;
         dragSource = key;
         e.dataTransfer.effectAllowed = 'move';
         placed.classList.add('dragging');
       });
-      placed.addEventListener('dragend', () => placed.classList.remove('dragging'));
+      placed.addEventListener('dragend', () => {
+        placed.classList.remove('dragging');
+        setTimeout(() => { placed._didDrag = false; }, 0);
+      });
+
+      placed.addEventListener('click', (e) => {
+        if (placed._didDrag) return;
+        if (e.target.closest('.remove-meal-btn')) return;
+        showMealPopup(meal);
+      });
 
       placed.querySelector('.remove-meal-btn').addEventListener('click', (e) => {
         e.stopPropagation();
         const plan = getPlan();
         const m = plan[key];
         if (!m) return;
-        // Return to queue
         const queue = getQueue();
         if (!queue.find((q) => q.meal_id === m.meal_id)) {
           queue.push(m);
@@ -232,6 +287,57 @@ function renderPlan() {
       hint.textContent = 'Drop here';
       cell.appendChild(hint);
     }
+  });
+}
+
+// ── Meal Detail Popup ──────────────────────────────────────────────
+
+function getImageUrl(meal) {
+  if (meal.image_url) return meal.image_url;
+  if (meal.meal_id) {
+    return `https://firebasestorage.googleapis.com/v0/b/${firebaseConfig.storageBucket}/o/meal_images%2F${meal.meal_id}.jpg?alt=media`;
+  }
+  return '';
+}
+
+function showMealPopup(meal) {
+  const modal = document.getElementById('mealDetailModal');
+  const imgEl = document.getElementById('popupMealImage');
+  const imgUrl = getImageUrl(meal);
+
+  if (imgUrl) {
+    imgEl.src = imgUrl;
+    imgEl.style.display = 'block';
+    imgEl.onerror = () => { imgEl.style.display = 'none'; };
+  } else {
+    imgEl.style.display = 'none';
+  }
+
+  document.getElementById('popupMealName').textContent = meal.meal_name || '';
+
+  const ingredients = Array.isArray(meal.grocery_item)
+    ? meal.grocery_item.join(', ')
+    : (meal.grocery_item || 'N/A');
+
+  document.getElementById('popupMealDescription').innerHTML =
+    `<strong>Description:</strong> ${meal.description || 'N/A'}`;
+  document.getElementById('popupMealIngredients').innerHTML =
+    `<strong>Grocery Items:</strong> ${ingredients}`;
+  document.getElementById('popupMealType').innerHTML =
+    `<strong>Meal Type:</strong> ${meal.meal_type || 'N/A'}`;
+  document.getElementById('popupMealDiet').innerHTML =
+    `<strong>Diet:</strong> ${Array.isArray(meal.diet) ? meal.diet.join(', ') : (meal.diet || 'N/A')}`;
+
+  modal.classList.remove('hidden');
+}
+
+function setupModal() {
+  const modal = document.getElementById('mealDetailModal');
+  document.getElementById('modalCloseBtn').addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.add('hidden');
   });
 }
 
@@ -255,6 +361,8 @@ auth.onAuthStateChanged(async (user) => {
   } catch (err) {
     console.error('Error checking user role:', err);
   }
+  currentUser = user;
+  setupModal();
   renderQueue();
   buildGrid();
 });

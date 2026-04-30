@@ -17,15 +17,37 @@
     </div>
 
     <!-- Selected meals queue -->
-    <div class="section-title">My Selected Meals</div>
+    <div class="plan-title-bar">
+      <div class="plan-section-title">
+        My Selected Meals
+        <a href="grocerylist.html" class="grocery-list-btn"
+          >Go to My Grocery List</a
+        >
+      </div>
+    </div>
     <div class="meal-queue-section">
       <div class="meal-queue" id="mealQueue"></div>
     </div>
 
     <!-- 7-day plan grid -->
-    <div class="section-title">This Week's Meal Plan</div>
+    <div class="plan-title-bar">
+      <div class="plan-section-title">This Week's Meal Plan</div>
+    </div>
     <div class="plan-grid-section">
       <div class="plan-grid" id="planGrid"></div>
+    </div>
+
+    <!-- Meal detail modal -->
+    <div class="meal-detail-modal hidden" id="mealDetailModal">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modalCloseBtn">×</button>
+        <img class="popup-meal-image" id="popupMealImage" src="" alt="" />
+        <div class="popup-meal-name" id="popupMealName"></div>
+        <div class="popup-meal-detail" id="popupMealDescription"></div>
+        <div class="popup-meal-detail" id="popupMealIngredients"></div>
+        <div class="popup-meal-detail" id="popupMealType"></div>
+        <div class="popup-meal-detail" id="popupMealDiet"></div>
+      </div>
     </div>
 
     <footer class="footer">
