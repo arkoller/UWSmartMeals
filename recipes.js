@@ -59,7 +59,9 @@ function applyFilters() {
 
     const mealTypeMatch =
       selectedMealTypes.length === 0 ||
-      selectedMealTypes.includes(meal.meal_type);
+      (Array.isArray(meal.meal_type)
+        ? meal.meal_type.some((t) => selectedMealTypes.includes(t))
+        : selectedMealTypes.includes(meal.meal_type));
 
     return textMatch && dietMatch && mealTypeMatch;
   });
