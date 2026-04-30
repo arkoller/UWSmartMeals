@@ -1,4 +1,32 @@
 let unsubscribeGrocery = null;
+let currentCheckedState = {};
+
+// ── Build list from localStorage mealPlan ─────────────────────────
+
+function buildLocalItems() {
+  const plan = JSON.parse(localStorage.getItem('mealPlan') || '{}');
+  const ingredientMap = {};
+
+  Object.values(plan).forEach((meal) => {
+    if (!Array.isArray(meal.grocery_item)) return;
+    meal.grocery_item.forEach((item) => {
+      const key = item.trim().toLowerCase();
+      if (!key) return;
+      if (ingredientMap[key]) {
+        ingredientMap[key].count += 1;
+      } else {
+        ingredientMap[key] = { display: item.trim(), count: 1 };
+      }
+    });
+  });
+
+  return Object.entries(ingredientMap).map(([key, val]) => ({
+    key,
+    display: val.display,
+    count: val.count,
+    checked: currentCheckedState[key] || false,
+  }));
+}
 
 // ── Render ─────────────────────────────────────────────────────────
 
@@ -39,7 +67,6 @@ function renderGroceryList(items, uid) {
     checkWrap.appendChild(checkbox);
     checkWrap.appendChild(nameSpan);
 
-    // Info button sits right after the name, inside the row
     if (item.count > 1) {
       const wrap = document.createElement('span');
       wrap.className = 'info-btn-wrap';
@@ -59,21 +86,26 @@ function renderGroceryList(items, uid) {
     }
 
     row.appendChild(checkWrap);
-
     container.appendChild(row);
   });
 }
 
-// ── Firebase write ─────────────────────────────────────────────────
+// ── Persist checked state ──────────────────────────────────────────
 
 function updateChecked(uid, key, checked) {
-  const docRef = db.collection('grocery_lists').doc(uid);
-  docRef.get().then((snap) => {
-    if (!snap.exists) return;
-    const items = snap.data().items || [];
-    const updated = items.map((i) => i.key === key ? { ...i, checked } : i);
-    docRef.set({ items: updated });
-  }).catch(console.error);
+  currentCheckedState[key] = checked;
+  localStorage.setItem('groceryChecked', JSON.stringify(currentCheckedState));
+
+  // Also sync to Firebase when available
+  db.collection('grocery_lists').doc(uid)
+    .get()
+    .then((snap) => {
+      if (!snap.exists) return;
+      const items = snap.data().items || [];
+      const updated = items.map((i) => (i.key === key ? { ...i, checked } : i));
+      snap.ref.set({ items: updated });
+    })
+    .catch(console.error);
 }
 
 // ── Auth & Init ────────────────────────────────────────────────────
@@ -97,11 +129,31 @@ auth.onAuthStateChanged(async (user) => {
     console.error('Error checking user role:', err);
   }
 
-  // Real-time listener on the user's grocery list
+  const uid = user.uid;
+
+  // Load checked states from localStorage immediately (always works)
+  currentCheckedState = JSON.parse(localStorage.getItem('groceryChecked') || '{}');
+
+  // Render the list right away from localStorage meal plan
+  renderGroceryList(buildLocalItems(), uid);
+
+  // Try Firebase for real-time checked-state sync
   if (unsubscribeGrocery) unsubscribeGrocery();
-  unsubscribeGrocery = db.collection('grocery_lists').doc(user.uid)
-    .onSnapshot((snap) => {
-      const items = snap.exists ? (snap.data().items || []) : [];
-      renderGroceryList(items, user.uid);
-    }, console.error);
+  unsubscribeGrocery = db.collection('grocery_lists').doc(uid)
+    .onSnapshot(
+      (snap) => {
+        if (snap.exists) {
+          (snap.data().items || []).forEach((i) => {
+            currentCheckedState[i.key] = i.checked || false;
+          });
+          localStorage.setItem('groceryChecked', JSON.stringify(currentCheckedState));
+        }
+        // Re-render with updated checked states; item list still from localStorage
+        renderGroceryList(buildLocalItems(), uid);
+      },
+      (err) => {
+        console.error('Firebase grocery sync unavailable:', err);
+        // List is already rendered from localStorage — no action needed
+      }
+    );
 });
