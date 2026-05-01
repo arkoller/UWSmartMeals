@@ -1,5 +1,5 @@
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const MEAL_TYPES = ['Breakfast', 'Lunch', 'Dinner'];
+const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MEAL_TYPES = ["Breakfast", "Lunch", "Dinner"];
 
 let draggedMeal = null;
 let dragSource = null; // 'queue' | slot key string like '0-breakfast'
@@ -8,16 +8,16 @@ let currentUser = null;
 // ── Persistence ────────────────────────────────────────────────────
 
 function getQueue() {
-  return JSON.parse(localStorage.getItem('selectedMeals') || '[]');
+  return JSON.parse(localStorage.getItem("selectedMeals") || "[]");
 }
 function setQueue(arr) {
-  localStorage.setItem('selectedMeals', JSON.stringify(arr));
+  localStorage.setItem("selectedMeals", JSON.stringify(arr));
 }
 function getPlan() {
-  return JSON.parse(localStorage.getItem('mealPlan') || '{}');
+  return JSON.parse(localStorage.getItem("mealPlan") || "{}");
 }
 function setPlan(obj) {
-  localStorage.setItem('mealPlan', JSON.stringify(obj));
+  localStorage.setItem("mealPlan", JSON.stringify(obj));
   if (currentUser) syncGroceryList(currentUser.uid);
 }
 
@@ -45,29 +45,34 @@ function syncGroceryList(uid) {
   });
 
   // Fetch existing checked state, then write merged doc
-  const docRef = db.collection('grocery_lists').doc(uid);
-  docRef.get().then((snap) => {
-    const existing = snap.exists ? (snap.data().items || []) : [];
-    const checkedMap = {};
-    existing.forEach((i) => { checkedMap[i.key] = i.checked || false; });
+  const docRef = db.collection("grocery_lists").doc(uid);
+  docRef
+    .get()
+    .then((snap) => {
+      const existing = snap.exists ? snap.data().items || [] : [];
+      const checkedMap = {};
+      existing.forEach((i) => {
+        checkedMap[i.key] = i.checked || false;
+      });
 
-    const items = Object.entries(ingredientMap).map(([key, val]) => ({
-      key,
-      display: val.display,
-      count: val.count,
-      checked: checkedMap[key] || false,
-    }));
+      const items = Object.entries(ingredientMap).map(([key, val]) => ({
+        key,
+        display: val.display,
+        count: val.count,
+        checked: checkedMap[key] || false,
+      }));
 
-    docRef.set({ items });
-  }).catch(console.error);
+      docRef.set({ items });
+    })
+    .catch(console.error);
 }
 
 // ── Queue ──────────────────────────────────────────────────────────
 
 function renderQueue() {
   const queue = getQueue();
-  const container = document.getElementById('mealQueue');
-  container.innerHTML = '';
+  const container = document.getElementById("mealQueue");
+  container.innerHTML = "";
 
   if (queue.length === 0) {
     container.innerHTML =
@@ -79,48 +84,52 @@ function renderQueue() {
 }
 
 function buildQueueCard(meal) {
-  const card = document.createElement('div');
-  card.className = 'queue-card';
+  const card = document.createElement("div");
+  card.className = "queue-card";
   card.draggable = true;
   card.innerHTML = `
     <button class="remove-queue-btn" title="Remove">×</button>
     <div class="queue-card-name">${meal.meal_name}</div>
-    ${meal.meal_type ? `<div class="queue-card-type">${meal.meal_type}</div>` : ''}
+    ${
+      meal.meal_type
+        ? `<div class="queue-card-type">${meal.meal_type}</div>`
+        : ""
+    }
   `;
 
-  card.querySelector('.remove-queue-btn').addEventListener('click', (e) => {
+  card.querySelector(".remove-queue-btn").addEventListener("click", (e) => {
     e.stopPropagation();
     setQueue(getQueue().filter((m) => m.meal_id !== meal.meal_id));
     renderQueue();
   });
 
-  card.addEventListener('dragstart', (e) => {
+  card.addEventListener("dragstart", (e) => {
     draggedMeal = meal;
-    dragSource = 'queue';
-    e.dataTransfer.effectAllowed = 'move';
-    card.classList.add('dragging');
+    dragSource = "queue";
+    e.dataTransfer.effectAllowed = "move";
+    card.classList.add("dragging");
   });
-  card.addEventListener('dragend', () => card.classList.remove('dragging'));
+  card.addEventListener("dragend", () => card.classList.remove("dragging"));
 
   return card;
 }
 
 function setupQueueDrop() {
-  const q = document.getElementById('mealQueue');
+  const q = document.getElementById("mealQueue");
 
-  q.addEventListener('dragover', (e) => {
-    if (dragSource && dragSource !== 'queue') {
+  q.addEventListener("dragover", (e) => {
+    if (dragSource && dragSource !== "queue") {
       e.preventDefault();
-      q.classList.add('queue-drag-over');
+      q.classList.add("queue-drag-over");
     }
   });
-  q.addEventListener('dragleave', (e) => {
-    if (!q.contains(e.relatedTarget)) q.classList.remove('queue-drag-over');
+  q.addEventListener("dragleave", (e) => {
+    if (!q.contains(e.relatedTarget)) q.classList.remove("queue-drag-over");
   });
-  q.addEventListener('drop', (e) => {
+  q.addEventListener("drop", (e) => {
     e.preventDefault();
-    q.classList.remove('queue-drag-over');
-    if (!draggedMeal || dragSource === 'queue') return;
+    q.classList.remove("queue-drag-over");
+    if (!draggedMeal || dragSource === "queue") return;
 
     // Remove meal from its grid slot
     const plan = getPlan();
@@ -144,33 +153,33 @@ function setupQueueDrop() {
 // ── Plan Grid ──────────────────────────────────────────────────────
 
 function buildGrid() {
-  const grid = document.getElementById('planGrid');
-  grid.innerHTML = '';
+  const grid = document.getElementById("planGrid");
+  grid.innerHTML = "";
 
   // Corner placeholder
-  const corner = document.createElement('div');
-  corner.className = 'plan-corner';
+  const corner = document.createElement("div");
+  corner.className = "plan-corner";
   grid.appendChild(corner);
 
   // Day header cells
   DAYS.forEach((day) => {
-    const h = document.createElement('div');
-    h.className = 'plan-day-header';
+    const h = document.createElement("div");
+    h.className = "plan-day-header";
     h.textContent = day;
     grid.appendChild(h);
   });
 
   // One row per meal type
   MEAL_TYPES.forEach((type) => {
-    const label = document.createElement('div');
-    label.className = 'plan-meal-label';
+    const label = document.createElement("div");
+    label.className = "plan-meal-label";
     label.textContent = type;
     grid.appendChild(label);
 
     DAYS.forEach((_, dayIdx) => {
       const key = `${dayIdx}-${type.toLowerCase()}`;
-      const cell = document.createElement('div');
-      cell.className = 'drop-zone';
+      const cell = document.createElement("div");
+      cell.className = "drop-zone";
       cell.dataset.key = key;
       setupDropZone(cell, key);
       grid.appendChild(cell);
@@ -182,23 +191,23 @@ function buildGrid() {
 }
 
 function setupDropZone(cell, key) {
-  cell.addEventListener('dragover', (e) => {
+  cell.addEventListener("dragover", (e) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    cell.classList.add('drag-over');
+    e.dataTransfer.dropEffect = "move";
+    cell.classList.add("drag-over");
   });
-  cell.addEventListener('dragleave', (e) => {
-    if (!cell.contains(e.relatedTarget)) cell.classList.remove('drag-over');
+  cell.addEventListener("dragleave", (e) => {
+    if (!cell.contains(e.relatedTarget)) cell.classList.remove("drag-over");
   });
-  cell.addEventListener('drop', (e) => {
+  cell.addEventListener("drop", (e) => {
     e.preventDefault();
-    cell.classList.remove('drag-over');
+    cell.classList.remove("drag-over");
     if (!draggedMeal) return;
 
     const plan = getPlan();
 
     // Clear the source slot if dragging from another grid cell
-    if (dragSource !== 'queue') delete plan[dragSource];
+    if (dragSource !== "queue") delete plan[dragSource];
 
     // If the target already has a meal, displace it back to the queue
     if (plan[key]) {
@@ -215,7 +224,7 @@ function setupDropZone(cell, key) {
     setPlan(plan);
 
     // Remove from queue if it was dragged from there
-    if (dragSource === 'queue') {
+    if (dragSource === "queue") {
       setQueue(getQueue().filter((m) => m.meal_id !== draggedMeal.meal_id));
     }
 
@@ -229,14 +238,14 @@ function setupDropZone(cell, key) {
 function renderPlan() {
   const plan = getPlan();
 
-  document.querySelectorAll('.drop-zone').forEach((cell) => {
+  document.querySelectorAll(".drop-zone").forEach((cell) => {
     const key = cell.dataset.key;
     const meal = plan[key];
-    cell.innerHTML = '';
+    cell.innerHTML = "";
 
     if (meal) {
-      const placed = document.createElement('div');
-      placed.className = 'placed-meal';
+      const placed = document.createElement("div");
+      placed.className = "placed-meal";
       placed.draggable = true;
       placed.innerHTML = `
         <button class="remove-meal-btn" title="Remove">×</button>
@@ -246,45 +255,49 @@ function renderPlan() {
       // Track drag vs click
       placed._didDrag = false;
 
-      placed.addEventListener('dragstart', (e) => {
+      placed.addEventListener("dragstart", (e) => {
         placed._didDrag = true;
         draggedMeal = meal;
         dragSource = key;
-        e.dataTransfer.effectAllowed = 'move';
-        placed.classList.add('dragging');
+        e.dataTransfer.effectAllowed = "move";
+        placed.classList.add("dragging");
       });
-      placed.addEventListener('dragend', () => {
-        placed.classList.remove('dragging');
-        setTimeout(() => { placed._didDrag = false; }, 0);
+      placed.addEventListener("dragend", () => {
+        placed.classList.remove("dragging");
+        setTimeout(() => {
+          placed._didDrag = false;
+        }, 0);
       });
 
-      placed.addEventListener('click', (e) => {
+      placed.addEventListener("click", (e) => {
         if (placed._didDrag) return;
-        if (e.target.closest('.remove-meal-btn')) return;
+        if (e.target.closest(".remove-meal-btn")) return;
         showMealPopup(meal);
       });
 
-      placed.querySelector('.remove-meal-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        const plan = getPlan();
-        const m = plan[key];
-        if (!m) return;
-        const queue = getQueue();
-        if (!queue.find((q) => q.meal_id === m.meal_id)) {
-          queue.push(m);
-          setQueue(queue);
-        }
-        delete plan[key];
-        setPlan(plan);
-        renderQueue();
-        renderPlan();
-      });
+      placed
+        .querySelector(".remove-meal-btn")
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          const plan = getPlan();
+          const m = plan[key];
+          if (!m) return;
+          const queue = getQueue();
+          if (!queue.find((q) => q.meal_id === m.meal_id)) {
+            queue.push(m);
+            setQueue(queue);
+          }
+          delete plan[key];
+          setPlan(plan);
+          renderQueue();
+          renderPlan();
+        });
 
       cell.appendChild(placed);
     } else {
-      const hint = document.createElement('span');
-      hint.className = 'drop-hint';
-      hint.textContent = 'Drop here';
+      const hint = document.createElement("span");
+      hint.className = "drop-hint";
+      hint.textContent = "Drop here";
       cell.appendChild(hint);
     }
   });
@@ -297,69 +310,80 @@ function getImageUrl(meal) {
   if (meal.meal_id) {
     return `https://firebasestorage.googleapis.com/v0/b/${firebaseConfig.storageBucket}/o/meal_images%2F${meal.meal_id}.jpg?alt=media`;
   }
-  return '';
+  return "";
 }
 
 function showMealPopup(meal) {
-  const modal = document.getElementById('mealDetailModal');
-  const imgEl = document.getElementById('popupMealImage');
+  const modal = document.getElementById("mealDetailModal");
+  const imgEl = document.getElementById("popupMealImage");
   const imgUrl = getImageUrl(meal);
 
   if (imgUrl) {
     imgEl.src = imgUrl;
-    imgEl.style.display = 'block';
-    imgEl.onerror = () => { imgEl.style.display = 'none'; };
+    imgEl.style.display = "block";
+    imgEl.onerror = () => {
+      imgEl.style.display = "none";
+    };
   } else {
-    imgEl.style.display = 'none';
+    imgEl.style.display = "none";
   }
 
-  document.getElementById('popupMealName').textContent = meal.meal_name || '';
+  document.getElementById("popupMealName").textContent = meal.meal_name || "";
 
   const ingredients = Array.isArray(meal.grocery_item)
-    ? meal.grocery_item.join(', ')
-    : (meal.grocery_item || 'N/A');
+    ? meal.grocery_item.join(", ")
+    : meal.grocery_item || "N/A";
 
-  document.getElementById('popupMealDescription').innerHTML =
-    `<strong>Description:</strong> ${meal.description || 'N/A'}`;
-  document.getElementById('popupMealIngredients').innerHTML =
-    `<strong>Grocery Items:</strong> ${ingredients}`;
-  document.getElementById('popupMealType').innerHTML =
-    `<strong>Meal Type:</strong> ${meal.meal_type || 'N/A'}`;
-  document.getElementById('popupMealDiet').innerHTML =
-    `<strong>Diet:</strong> ${Array.isArray(meal.diet) ? meal.diet.join(', ') : (meal.diet || 'N/A')}`;
+  document.getElementById(
+    "popupMealDescription"
+  ).innerHTML = `<strong>Description:</strong> ${meal.description || "N/A"}`;
+  document.getElementById(
+    "popupMealIngredients"
+  ).innerHTML = `<strong>Grocery Items:</strong> ${ingredients}`;
+  document.getElementById(
+    "popupMealType"
+  ).innerHTML = `<strong>Meal Type:</strong> ${meal.meal_type || "N/A"}`;
+  document.getElementById(
+    "popupMealDiet"
+  ).innerHTML = `<strong>Diet:</strong> ${
+    Array.isArray(meal.diet) ? meal.diet.join(", ") : meal.diet || "N/A"
+  }`;
 
-  modal.classList.remove('hidden');
+  modal.classList.remove("hidden");
 }
 
 function setupModal() {
-  const modal = document.getElementById('mealDetailModal');
-  document.getElementById('modalCloseBtn').addEventListener('click', () => {
-    modal.classList.add('hidden');
+  const modal = document.getElementById("mealDetailModal");
+  document.getElementById("modalCloseBtn").addEventListener("click", () => {
+    modal.classList.add("hidden");
   });
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.classList.add('hidden');
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
   });
 }
 
 // ── Auth & Init ────────────────────────────────────────────────────
 
-document.querySelector('#logoutBtn').addEventListener('click', () => {
-  auth.signOut().then(() => (window.location.href = 'login.html')).catch(console.error);
+document.querySelector("#logoutBtn").addEventListener("click", () => {
+  auth
+    .signOut()
+    .then(() => (window.location.href = "login.html"))
+    .catch(console.error);
 });
 
 auth.onAuthStateChanged(async (user) => {
   if (!user) {
-    window.location.href = 'login.html';
+    window.location.href = "login.html";
     return;
   }
   try {
-    const doc = await db.collection('user_accounts').doc(user.uid).get();
+    const doc = await db.collection("user_accounts").doc(user.uid).get();
     if (doc.exists && doc.data().isAdmin === true) {
-      window.location.href = 'admin.html';
+      window.location.href = "admin.html";
       return;
     }
   } catch (err) {
-    console.error('Error checking user role:', err);
+    console.error("Error checking user role:", err);
   }
   currentUser = user;
   setupModal();

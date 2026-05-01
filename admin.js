@@ -15,7 +15,7 @@ function showMessage(message, isError = false) {
 
 function getCheckedValues(name) {
   return Array.from(
-    document.querySelectorAll(`input[name="${name}"]:checked`),
+    document.querySelectorAll(`input[name="${name}"]:checked`)
   ).map((checkbox) => checkbox.value);
 }
 
@@ -51,7 +51,9 @@ function renderAdminRecipe(doc) {
     <div class="recipe-details">
       <span class="recipe-text">${recipe.meal_name || "Untitled Recipe"}</span>
       <div class="recipe-description">
-        <p><strong>Description:</strong> ${recipe.description || "No description available."}</p>
+        <p><strong>Description:</strong> ${
+          recipe.description || "No description available."
+        }</p>
         <p><strong>Ingredients:</strong> ${formatIngredients(recipe)}</p>
       </div>
     </div>
@@ -77,7 +79,7 @@ function loadAdminRecipes() {
       (error) => {
         console.error("Error loading admin recipes:", error);
         adminRecipesContainer.innerHTML = `<p class="empty-message">There was an error loading recipes.</p>`;
-      },
+      }
     );
 }
 
@@ -189,11 +191,18 @@ deleteModal.addEventListener("click", (e) => {
 document.getElementById("imageUrl").addEventListener("input", () => {
   const preview = document.getElementById("imagePreview");
   const url = document.getElementById("imageUrl").value.trim();
-  if (!url) { preview.style.display = "none"; return; }
+  if (!url) {
+    preview.style.display = "none";
+    return;
+  }
   preview.src = url;
   preview.style.display = "block";
-  preview.onerror = () => { preview.style.display = "none"; };
-  preview.onload = () => { preview.style.display = "block"; };
+  preview.onerror = () => {
+    preview.style.display = "none";
+  };
+  preview.onload = () => {
+    preview.style.display = "block";
+  };
 });
 
 document.getElementById("adminLogoutBtn").addEventListener("click", (e) => {

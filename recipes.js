@@ -118,7 +118,10 @@ auth.onAuthStateChanged(async (user) => {
     .orderBy("meal_name")
     .onSnapshot(
       (snapshot) => {
-        allMeals = snapshot.docs.map((doc) => ({ meal_id: doc.id, ...doc.data() }));
+        allMeals = snapshot.docs.map((doc) => ({
+          meal_id: doc.id,
+          ...doc.data(),
+        }));
         applyFilters();
       },
       (err) => {

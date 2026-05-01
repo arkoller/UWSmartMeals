@@ -8,10 +8,16 @@ loginForm.addEventListener("submit", async (event) => {
   const password = document.querySelector("#loginPassword").value;
 
   try {
-    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const userCredential = await auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
     loginMessage.textContent = "Login successful!";
 
-    const userDoc = await db.collection("user_accounts").doc(userCredential.user.uid).get();
+    const userDoc = await db
+      .collection("user_accounts")
+      .doc(userCredential.user.uid)
+      .get();
     if (userDoc.exists && userDoc.data().isAdmin === true) {
       window.location.href = "admin.html";
     } else {
