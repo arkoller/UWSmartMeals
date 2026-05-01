@@ -133,8 +133,7 @@ recipeForm.addEventListener("submit", async (event) => {
     !description ||
     groceryItems.length === 0 ||
     !imageUrl ||
-    mealTypes.length === 0 ||
-    diets.length === 0
+    mealTypes.length === 0
   ) {
     showMessage("Please fill out all fields before submitting.", true);
     return;
@@ -185,6 +184,16 @@ deleteModal.addEventListener("click", (e) => {
   if (e.target === deleteModal) {
     closeDeleteModal();
   }
+});
+
+document.getElementById("imageUrl").addEventListener("input", () => {
+  const preview = document.getElementById("imagePreview");
+  const url = document.getElementById("imageUrl").value.trim();
+  if (!url) { preview.style.display = "none"; return; }
+  preview.src = url;
+  preview.style.display = "block";
+  preview.onerror = () => { preview.style.display = "none"; };
+  preview.onload = () => { preview.style.display = "block"; };
 });
 
 document.getElementById("adminLogoutBtn").addEventListener("click", (e) => {
