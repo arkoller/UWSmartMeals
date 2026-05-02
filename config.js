@@ -15,4 +15,4 @@ let auth = firebase.auth();
 let db = firebase.firestore();
 
 // define a storage reference
-let ref = firebase.storage().ref();
+// let ref = firebase.storage().ref();
